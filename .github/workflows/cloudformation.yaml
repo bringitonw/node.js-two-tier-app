@@ -20,7 +20,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: my-web-stack
+      - name: Deploy CloudFormation stack
         uses: aws-actions/aws-cloudformation-deploy@v1
         with:
           stack-name: my-web-stack
