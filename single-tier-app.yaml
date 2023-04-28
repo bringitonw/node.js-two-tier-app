@@ -1,0 +1,27 @@
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-02396cdd13e9a1257
+      InstanceType: t2.micro
+      KeyName: ec2-rds-cloudformation-key-pair
+      UserData:
+       Fn::Base64: !Sub |
+         #!/bin/bash
+         echo "Hello, world!"
+      SecurityGroupIds:
+        - sg-04596f4a80d2c4550
+
+  MyDB:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 5
+      DBInstanceClass: db.t2.micro
+      Engine: MySQL
+      MasterUsername: admin
+      MasterUserPassword: admin123
+      DBInstanceIdentifier: mydb
+      PubliclyAccessible: false
+      StorageType: gp2
+      VPCSecurityGroups:
+        - sg-04596f4a80d2c4550
