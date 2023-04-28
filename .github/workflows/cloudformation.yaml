@@ -21,5 +21,6 @@ jobs:
             --template-file ./single-tier-app.yaml \
             --stack-name my-stack3 \
             --capabilities CAPABILITY_NAMED_IAM \
-            --parameter-overrides Ec2Instance=Instance
+            --parameter-overrides 
+              Ec2Instance=Instance
             --region us-east-1
